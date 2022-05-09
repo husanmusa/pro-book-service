@@ -1,0 +1,31 @@
+syntax="proto3";
+
+package book_service;
+option go_package="genproto/book_service";
+
+import "google/protobuf/empty.proto";
+import "user.proto";
+import "book.proto";
+import "salebook.proto";
+
+service BookService {
+  rpc CreateUser(CreateUserRequest) returns (User) {}
+  rpc GetUser(ByIdReq) returns (User) {}
+  rpc UpdateUser(UpdateUserRequest) returns (User) {}
+  rpc DeleteUser(ByIdReq) returns (google.protobuf.Empty) {}
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+  rpc FindBookFromUsers(ByIdReq) returns (ListUsersResponse) {}
+
+  rpc CreateBook(CreateBookRequest) returns (Book) {}
+  rpc GetBook(ByIdReq) returns (Book) {}
+  rpc UpdateBook(UpdateBookRequest) returns (Book) {}
+  rpc DeleteBook(ByIdReq) returns (google.protobuf.Empty) {}
+  rpc ListBooks(ListBooksRequest) returns (ListBooksResponse) {}
+  rpc ListBooksByUserId(ByIdReq) returns (ListBooksResponse) {}
+
+  rpc CreateSaleBook(CreateSaleBookRequest) returns (SaleBook) {}
+  rpc GetSaleBook(ByIdReq) returns (SaleBook) {}
+  rpc UpdateSaleBook(UpdateSaleBookRequest) returns (SaleBook) {}
+  rpc DeleteSaleBook(ByIdReq) returns (google.protobuf.Empty) {}
+  rpc ListSaleBooks(ListSaleBooksRequest) returns (ListSaleBooksResponse) {}
+}
